@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AzureRelayCore;
 using AzureRelayCore.Infrastructure;
 
 class Program
 {
-    static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         Startup startup = new Startup();
         IServiceProvider serviceProvider = startup.ConfigureServices();
         IStream relayConnection = (IStream)serviceProvider.GetService(typeof(IStream));
-        relayConnection.StartStreamAsync().GetAwaiter().GetResult();
+        await relayConnection.StartStreamAsync();
+        Console.ReadLine();
     }
 }

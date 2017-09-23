@@ -9,12 +9,12 @@ let wss = WebSocketRelay.createRelayedServer(
             `http://${AppSettings.NAMESPACE}`,
             AppSettings.KEYRULE,
             AppSettings.KEY)
-    },
+    },      
     (ws) => {
         (ws as any).id = autoIncrementId++;
         console.log('New connection accepted');
         ws.onmessage = function (event) {
-            let wsMessage = event.data.toString('utf8');
+            let wsMessage = event.data.toString();
             for (let i = 0; i < wss.clients.length; i++) {
                 let client = wss.clients[i];
                 if (client.readyState === client.OPEN

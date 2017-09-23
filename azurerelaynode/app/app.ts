@@ -7,7 +7,7 @@ let tweetViewModel = new TweetViewModel();
 
 ko.applyBindings(tweetViewModel);
 
-let ws = new WebSocket(`wss://coreevent.servicebus.windows.net:443/$hc/corehybrid?
+let ws = new WebSocket(`wss://relaymalaga.servicebus.windows.net:443/$hc/relay01?
     sb-hc-action=connect&sb-hc-token=${relayToken}`);
 
 ws.onmessage = function (event) {
